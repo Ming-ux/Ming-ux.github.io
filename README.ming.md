@@ -26,5 +26,3 @@ when in production, copy the final .css into the css file. no more less file in 
 ||index.html或index.md|网站的首页文件|
 |site.post|_post|任意地方使用site.post可以获取_post中的文章|
 
-
-#### test
