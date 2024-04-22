@@ -11,7 +11,7 @@ description: "Welcome to my blog!"
                 <div class="post-preview  post-first-preview">
                     {% assign first_select_post = site.posts | where: 'tags', '精选' | first %}
                     <a href="{{ first_select_post.url | prepend: site.baseurl }}">
-                        <img class="post-img post-first-img" src={{first_select_post.header-img | prepend: site.baseurl}} style="background-image:url('{{first_select_post.header-img | prepend: site.baseurl}}')"/>
+                        <img class="post-img post-first-img" src="{{first_select_post.header-img | prepend: site.baseurl}}" style="background-image:url('{{first_select_post.header-img | prepend: site.baseurl}}')"/>
                         <h2 class="post-title first-post-title">
                             {{ first_select_post.title }}
                         </h2>
@@ -33,7 +33,7 @@ description: "Welcome to my blog!"
                 <div class="post-preview post-self-preview">
                     {% assign first_select_post = site.posts | where: 'tags', '精选' | first %}
                     <a href="{{ first_select_post.url | prepend: site.baseurl }}">
-                        <img class="post-img" src={{first_select_post.header-img | prepend: site.baseurl}}/>
+                        <img class="post-img" src="{{first_select_post.header-img | prepend: site.baseurl}}"/>
                         <h2 class="post-title">
                             {{ first_select_post.title }}
                         </h2>
@@ -60,7 +60,7 @@ description: "Welcome to my blog!"
             <div class="col-gala-xs-12 col-gala-sm-6 col-gala-md-3">
                 <div class="post-preview">
                     <a href="{{ post.url | prepend: site.baseurl }}">
-                        <img class="post-img" src={{post.header-img | prepend: site.baseurl}}/>
+                        <img class="post-img" src="{{post.header-img | prepend: site.baseurl}}"/>
                         <h2 class="post-title">
                             {{ post.title }}
                         </h2>
