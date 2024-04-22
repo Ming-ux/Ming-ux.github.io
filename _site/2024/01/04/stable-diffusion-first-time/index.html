@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/home/img/favicon.ico">
+
+    <title>stable diffusion webUI项目启动流程和若干个模型尝试 - 吕明慧的博客 | Ming's Blog</title>
+
+    <link rel="canonical" href="http://localhost:4000/home/2024/01/04/stable-diffusion-first-time/">
+
+
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/home/css/bootstrap.css">
+
+    <!-- Custom CSS -->
+    <!-- <link rel="stylesheet" href="/home/css/ming-blog.css"> -->
+
+    <!-- Ming add developing mode LESS -->
+    <link rel="stylesheet" href="/home/less/ming-blog.css">
+    <link rel="stylesheet" href="/home/less/page-default.css">
+    <link rel="stylesheet" href="/home/less/sidebar.css">
+
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/home/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    
+    <!-- Navigation -->
+<div class="container">
+	<div class="row">
+        <nav class="navbar navbar-float navbar-default navbar-custom navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand navbar-float-brand" href="/home/">
+                        <svg width="50px" height="50px" viewBox="0 0 135 135" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g class="navbar-brand-logo" stroke-width="18">
+                                    <g transform="translate(-0.000000, 0.000000)">
+                                        <g>
+                                            <rect x="9" y="9" width="117" height="41.2757068"></rect>
+                                            <rect x="9" y="84.7242932" width="117" height="41.2757068"></rect>
+                                        </g>
+                                        <line x1="53" y1="53" x2="81.8876861" y2="82.6176286"></line>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                        <div>
+                            <div class="navbar-name">Minghui Lv</div>
+                            <div class="navbar-blog">Blog</div>
+                        </div>
+                    </a>
+                </div>
+        
+
+                <div id="huxblog_navbar">
+                    <div class="navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right navbar-float-right-bar">
+                            <li>
+                                <a class="navbar-float-right-brand" navbar-float-brand href="/home/">精选文章</a>
+                            </li>
+                            <!-- Traverse pages with html suffix in the root directory -->
+                            
+                            <li>
+                                <a class="navbar-float-right-brand" href="/home/knowledge/">知识点</a>
+                            </li>
+                            
+                            <li>
+                                <a class="navbar-float-right-brand" href="/home/tags/">tags</a>
+                            </li>
+                            
+                            <li>
+                                <a class="navbar-float-right-brand" href="/home/%E6%88%91/">关于「 我 」</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+        </nav>
+
+    </div>
+</div>
+
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/home//img/for-post/01_stablediffusion.jpg" width="0" height="0"> -->
+
+<!-- 单篇文章 -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('/home//img/for-post/01_stablediffusion.jpg');
+
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12  col-md-12 ">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/home/tags/#2024" title="2024">2024</a>
+                        
+                        <a class="tag" href="/home/tags/#AIGC" title="AIGC">AIGC</a>
+                        
+                        <a class="tag" href="/home/tags/#stable diffusion" title="stable diffusion">stable diffusion</a>
+                        
+                        <a class="tag" href="/home/tags/#精选" title="精选">精选</a>
+                        
+                    </div>
+                    <h1>stable diffusion webUI项目启动流程和若干个模型尝试</h1>
+                    
+                    
+                    <h2 class="subheading">“选择mac运行stable diffusion webUI真实一大错误。占用内存不断增加，使用流畅度不断降低，性能不够导致出图超慢，刚开始的好奇心已经逐步被所剩无几的耐心所打败。”</h2>
+                    
+                    <span class="meta">Posted by Lyuminghui on January 4, 2024</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+                        <!-- Side Catalog Container -->
+                        
+                        <div class="
+                            col-lg-3
+                            col-lg-offset-0
+                            col-md-12
+                            col-md-offset-0
+                            sidebar-container
+                            catalog-container">
+                            <div class="side-catalog">
+                                <hr class="hidden-sm hidden-xs">
+                                <h5>
+                                    <a class="catalog-toggle" href="#">目录速览</a>
+                                </h5>
+                                <ul class="catalog-body">
+                                    
+                                    
+                                        
+            
+                                        
+                                    
+                                        
+                                        <li>
+                                        <a href="#sdwebui体验">
+                                            SDWebUI体验
+                                        </a>
+                                        </li>
+                                        
+            
+                                        
+                                    
+                                        
+                                        <li>
+                                        <a href="#1-环境配置">
+                                            1. 环境配置
+                                        </a>
+                                        </li>
+                                        
+            
+                                        
+                                    
+                                        
+                                        <li>
+                                        <a href="#2-modal下载">
+                                            2. Modal下载
+                                        </a>
+                                        </li>
+                                        
+            
+                                        
+                                        <ul class="catalog-body">
+                                            
+                                            
+                                                
+
+                                                
+                                            
+                                                
+                                                <li>
+                                                    <a href="#21-什么是base-model模型">
+                                                        2.1 什么是Base Model模型
+                                                    </a>
+                                                </li>
+                                                
+
+                                                
+                                            
+                                                
+                                                <li>
+                                                    <a href="#22-什么是checkpoint-embedding-lora">
+                                                        2.2 什么是checkpoint-embedding-LoRA
+                                                    </a>
+                                                </li>
+                                                
+
+                                                
+                                                <ul class="catalog-body">
+                                                    
+                                                    
+                                                        
+                                                    
+                                                        
+                                                        <li>
+                                                            <a href="#221-checkpoint-检查点模型">
+                                                                2.2.1 checkpoint 检查点模型
+                                                            </a>
+                                                        </li>
+                                                        
+                                                    
+                                                        
+                                                        <li>
+                                                            <a href="#222-embedding-文本嵌入">
+                                                                2.2.2 embedding 文本嵌入
+                                                            </a>
+                                                        </li>
+                                                        
+                                                    
+                                                        
+                                                        <li>
+                                                            <a href="#223-lora(low-rank-adaptation-models)-低序适应性模型。">
+                                                                2.2.3 LoRA(Low-Rank Adaptation Models) 低序适应性模型。
+                                                            </a>
+                                                        </li>
+                                                        
+                                                    
+                                                </ul>
+                                                
+                                            
+                                                
+                                                <li>
+                                                    <a href="#23-常用模型">
+                                                        2.3 常用模型
+                                                    </a>
+                                                </li>
+                                                
+
+                                                
+                                                <ul class="catalog-body">
+                                                    
+                                                    
+                                                        
+                                                    
+                                                        
+                                                        <li>
+                                                            <a href="#231-二次元模型">
+                                                                2.3.1 二次元模型
+                                                            </a>
+                                                        </li>
+                                                        
+                                                    
+                                                        
+                                                        <li>
+                                                            <a href="#232-写实派模型">
+                                                                2.3.2 写实派模型
+                                                            </a>
+                                                        </li>
+                                                        
+                                                    
+                                                        
+                                                        <li>
+                                                            <a href="#233-q版真人模型">
+                                                                2.3.3 Q版真人模型
+                                                            </a>
+                                                        </li>
+                                                        
+                                                    
+                                                        
+                                                        <li>
+                                                            <a href="#234-产品设计">
+                                                                2.3.4 产品设计
+                                                            </a>
+                                                        </li>
+                                                        
+                                                    
+                                                        
+                                                        <li>
+                                                            <a href="#235-ui设计">
+                                                                2.3.5 UI设计
+                                                            </a>
+                                                        </li>
+                                                        
+                                                    
+                                                        
+                                                        <li>
+                                                            <a href="#236-建筑设计">
+                                                                2.3.6 建筑设计
+                                                            </a>
+                                                        </li>
+                                                        
+                                                    
+                                                        
+                                                        <li>
+                                                            <a href="#237-海报设计">
+                                                                2.3.7 海报设计
+                                                            </a>
+                                                        </li>
+                                                        
+                                                    
+                                                        
+                                                        <li>
+                                                            <a href="#238-风格插画">
+                                                                2.3.8 风格插画
+                                                            </a>
+                                                        </li>
+                                                        
+                                                    
+                                                </ul>
+                                                
+                                            
+                                        </ul>
+                                        
+                                    
+                                        
+                                        <li>
+                                        <a href="#3-图片生成初体验">
+                                            3. 图片生成初体验
+                                        </a>
+                                        </li>
+                                        
+            
+                                        
+                                    
+                                        
+                                        <li>
+                                        <a href="#4-小结">
+                                            4. 小结
+                                        </a>
+                                        </li>
+                                        
+            
+                                        
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                        
+
+
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-9
+                col-lg-offset-0
+                col-md-12
+                col-md-offset-0
+                post-container">
+                <h1 id="sdwebui体验">SDWebUI体验</h1>
+<ul>
+  <li>
+    <p>配置：macbook m1</p>
+  </li>
+  <li>
+    <p>参考：<a href="https://www.bilibili.com/video/BV1Us4y1X75d/?vd_source=b5986de1b744d9509adf94ce3cdd2af5">b站:Nerdy同学的Mac m1部署教程</a></p>
+  </li>
+</ul>
+
+<h1 id="1-环境配置">1. 环境配置</h1>
+<ul>
+  <li>
+    <p>安装homebrew（安装包管理器）国内镜像：
+<code class="language-plaintext highlighter-rouge">/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"</code></p>
+  </li>
+  <li>终端使用homebrew安装各种工具(已安装的可以忽略)：
+<code class="language-plaintext highlighter-rouge">brew install cmake protobuf rust python@3.10 git wget</code></li>
+  <li>前两步完成后运行SD Web UI的环境已经配置好了，git<a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui">
+AUTOMATIC1111开发的SDwebUI项目代码</a>到本地</li>
+  <li>打开stable diffusion项目代码找到webUI.sh脚本用终端打开运行，脚本自动帮你下载项目依赖，下载成功后自动打开浏览器展示页面（如图1）。</li>
+</ul>
+
+<div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_01.jpg" alt="模型运行后打开local URL即可预览" width="60%" /></div>
+<div align="center"><span></span></div>
+
+<blockquote>
+  <p>图片中<strong>stable diffusion model failed to load</strong>是因为初始项目model文件夹为空，因此无法加载模型，可在ai大模型素材网站<a href="https://civitai.com/">civitai</a>和<a href="https://huggingface.co/">hugging face</a>手动下载想要到模型到<strong>models</strong>文件夹即可。</p>
+</blockquote>
+
+<ul>
+  <li>打开浏览器，看到web ui就成功了，开始作图吧~</li>
+</ul>
+<div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_03.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
+
+<h1 id="2-modal下载">2. Modal下载</h1>
+<p>共享模型和数据集的平台有：</p>
+<ul>
+  <li><a href="https://huggingface.co/">hugging face</a>：类似github,具有成熟的模型社区和评论互动。</li>
+  <li><a href="https://civitai.com/">civitai</a>：类似pinterest一样的图片瀑布流性，直观展示每个模型的视觉风格，更利于搜索。</li>
+</ul>
+
+<blockquote>
+  <p>💡: 本文模型素材皆来自civitai（下文简称c站）。</p>
+  <h2 id="21-什么是base-model模型">2.1 什么是Base Model模型</h2>
+  <p>    在c站几乎所有模型中的base model一栏通常会是SD1、SD1.5等底模型，这是SD官方发行的图片生成模型，具有大而全的特点。但正因为训练数据全而不精，导致仅使用底模生成的图片质量不佳，难以满足需求。因此“炼丹师”会在底模的基础上继续投入大量高质量特定风格的图片继续训练，形成针对性更强、画面更精美的模型，包括checkpoint、embedding和LoRA三种形态。</p>
+</blockquote>
+
+<h2 id="22-什么是checkpoint-embedding-lora">2.2 什么是checkpoint-embedding-LoRA</h2>
+<p>    checkpoint、embedding、LoRA这三种模型都可以显著提升图片的风格特性，使用方法类似但原理有所差别。</p>
+<h3 id="221-checkpoint-检查点模型">2.2.1 checkpoint 检查点模型</h3>
+<p>    底模也是一种checkpoint。但因为产出取决于训练数据，想要更新产出，就需要更新训练数据，因此更多“炼丹师”在底模基础上（巨人肩膀上）继续投入新的风格图片并将训练结果记录下来形成新的模型。因此check体积较大，通常在2-8GB内。使用checkpoint可生成比底模质量更好，视觉风格更一致的图片。</p>
+<ul>
+  <li>使用方法：下载checkpoint放到stable diffusion webUI-&gt; models -&gt; stable diffusion文件夹内即可。
+    <h3 id="222-embedding-文本嵌入">2.2.2 embedding 文本嵌入</h3>
+    <p>    在生成图片时，除了选定模型外，还需要大量精确的描述词帮助模型理解你的需求。有没有可能有人已经帮你写好了prompt词？embedding就是如此。embedding使用向量文本更加精确定位图像特征，让模型更具针对性。就好比某次语文考试范围是一整本书，A学生拿到了一张小抄，上面透露了本次考试的更精确的范围是第5章，Ta将精力都放在复习第五章内，因为Ta得到了更加聚焦的消息，因此考出了更高的分数。embedding格式是纯文本，因此体积仅占几十KB。</p>
+  </li>
+  <li>使用方式：下载embedding放置到stable diffusion webUI-&gt; embeddings 文件夹,在正向Prompt词输入框内填写触发词<code class="language-plaintext highlighter-rouge">trigger words</code>即可，根据embedding作者提示还可调整模型权重调节画面效果。
+    <h3 id="223-loralow-rank-adaptation-models-低序适应性模型">2.2.3 LoRA(Low-Rank Adaptation Models) 低序适应性模型。</h3>
+    <p>    LoRA像是一种外挂，用于调节checkpoint产出。embedding只是给出了更精确的定位，但无法告知更新的知识。LoRA则是对某个人物或某种风格更新、更详细、更具体的训练模型。就好比B同学在语文考试前拿到了一张新闻报纸，与没有报纸的其他同学相比，B同学阅读到的相关新闻素材指导他写出了更震撼人心的文章，最后考出了非凡的成绩。因此LoRA是面向某种checkpoint新的延伸，信息量比embedding大，但比checkpoint小，体积约占数百MB。</p>
+  </li>
+  <li>使用方式：下载LoRA放置到stable diffusion webUI-&gt; models -&gt; LoRA文件夹,在正向Prompt词输入框内填写<code class="language-plaintext highlighter-rouge">&lt;lora:${lora模型名称}&gt;</code>即可触发。</li>
+</ul>
+
+<h2 id="23-常用模型">2.3 常用模型</h2>
+<p>    大量“炼丹师”的辛勤劳作促进模型社区的不断发展，许多模型经历了多次升级，下面整理常见风格的模型，模型名称随着迭代可能会有所不同。</p>
+<blockquote>
+  <p>💡 当前AI在视觉效果方面遥遥领先，但在图像逻辑处表现不佳，具体表现在如文字、尺寸等地方毫无逻辑，这与图像生成原理有关。因此在<strong>海报设计、icon设计、界面设计</strong>方面不建议使用AIGC。</p>
+</blockquote>
+
+<h3 id="231-二次元模型">2.3.1 二次元模型</h3>
+<ul>
+  <li>
+    <p>搜索关键词：Illustration, painting, sketch, drawing, comic, anime, catoon</p>
+  </li>
+  <li>
+    <p>模型推荐：</p>
+    <ul>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>Anything</td>
+              <td>万象熔炉 （日漫）</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+    <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_04.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
+
+    <ul>
+      <li>Counterfeit V2.5 （日漫）</li>
+    </ul>
+    <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_05.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
+
+    <ul>
+      <li>Dreamlike Diffusion（梦幻、赛博）</li>
+    </ul>
+    <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_06.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
+  </li>
+</ul>
+
+<h3 id="232-写实派模型">2.3.2 写实派模型</h3>
+<ul>
+  <li>搜索关键词：Photography, photo, realistic, photorealistic, RAW photo</li>
+  <li>模型推荐：
+    <ul>
+      <li>Realistic Stock Photo
+        <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_07.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
+      </li>
+      <li>Realistic Vision
+        <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_08.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="233-q版真人模型">2.3.3 Q版真人模型</h3>
+<ul>
+  <li>
+    <p>搜索关键词：3D, render, chibi, digital art, concept art</p>
+  </li>
+  <li>模型推荐：
+    <ul>
+      <li>Q版风格 CHIBI
+        <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_09.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
+      </li>
+      <li>Never Ending Dream (NED)
+        <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_10.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
+      </li>
+      <li>Protogen(Realistic)
+        <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_11.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
+      </li>
+      <li>国风(GuoFeng3)
+        <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_12.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
+        <h3 id="234-产品设计">2.3.4 产品设计</h3>
+      </li>
+    </ul>
+  </li>
+  <li>搜索关键词：product design</li>
+  <li>模型推荐：
+    <ul>
+      <li>Product Design (Realistic minimalism-eddiemauro)
+        <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_13.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
+      </li>
+      <li>Product Design (Tech minimalism-eddiemauro) LORA
+        <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_14.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="235-ui设计">2.3.5 UI设计</h3>
+<ul>
+  <li>模型推荐：
+    <ul>
+      <li>APP ICONS - SDXL
+        <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_15.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="236-建筑设计">2.3.6 建筑设计</h3>
+<ul>
+  <li>模型推荐：
+    <ul>
+      <li>architecture_Exterior_SDlife_Chiasedamme
+        <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_16.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
+        <h3 id="237-海报设计">2.3.7 海报设计</h3>
+      </li>
+    </ul>
+  </li>
+  <li>模型推荐
+    <ul>
+      <li>Movie Poster （文字部分可看出毫无逻辑😰）
+        <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_17.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="238-风格插画">2.3.8 风格插画</h3>
+<ul>
+  <li>模型推荐：
+    <ul>
+      <li>SDVN7-NijiStyleXL （绝美的一个风格）
+        <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_18.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="3-图片生成初体验">3. 图片生成初体验</h1>
+<ul>
+  <li>选用模型：Realistic vision</li>
+  <li>参数调节：选定某张图片后，可抄目标图片右侧参数作业。
+    <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_19.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
+  </li>
+</ul>
+
+<hr />
+<p>第一次出图： <br />
+<strong>prompt</strong>：closeup portrait photo of beautiful 26 y.o woman, makeup, 8k uhd, high quality, dramatic, cinematic <br />
+<strong>Negative prompt</strong>：(deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime), text, cropped, out of frame, worst quality, low quality, jpeg artifacts, ugly, duplicate, morbid, mutilated, extra fingers, mutated hands, poorly drawn hands, poorly drawn face, mutation, deformed, blurry, dehydrated, bad anatomy, bad proportions, extra limbs, cloned face, disfigured, gross proportions, malformed limbs, missing arms, missing legs, extra arms, extra legs, fused fingers, too many fingers, long neck <br />
+<strong>seed</strong>：3108443162 <u>（seed种子，可看作某张图片内容风格的坐标，沿用参考图片的seed可生成类似的图像内容，若选择任意seed，生成图像内容自由度增更高。）</u> <br />
+<strong>耗时</strong>：56sec <br />
+<strong>出图大小</strong>：512*512；329kb <br />
+<strong>成品</strong>：</p>
+<div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_21.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
+<p><strong>存在的问题</strong>：皮肤模糊，高光太虚，画质不高。
+<strong>改进方式</strong>：使用hires.fix高清修复功能，调高scale为1.4，步数为10，denoising strength为0.5。</p>
+
+<hr />
+
+<p>第二张图 <br />
+<strong>耗时</strong>：61sec <br />
+<strong>出图大小</strong>：512*512；632kb <br />
+<strong>成品</strong>：</p>
+<div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_22.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
+<p><strong>结论</strong>：画质确实清晰了一倍，达到632kb,但seed变成随意后美女完全变了。增加sampling steps作用不大，但增加scale作用显著。另外，把图一直放着，就会根据这个图不断生成。保留该张图片的seed重新制作第三张。</p>
+
+<hr />
+<p>第三张图 <br />
+<strong>耗时</strong>：73sec <br />
+<strong>出图大小</strong>：512*512；1.2M <br />
+<strong>成品</strong>：</p>
+<div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_23.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
+<p><strong>结论</strong>：将scale调为2，画质已经没有明显变化，但图片体积仍然翻倍。保留seed后美女似乎保持了同一个人，但仔细观察头发、眼睛却有了细微变化。为了增加真实感，增加斑点、高光<code class="language-plaintext highlighter-rouge">high light on skin, two small moles</code>prompt词制作第四张图。</p>
+
+<hr />
+
+<p>第四张图 <br />
+<strong>耗时</strong>：75sec <br />
+<strong>出图大小</strong>：512*512；1.2M <br />
+<strong>成品</strong>：</p>
+<div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_24.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
+<p><strong>结论</strong>：由于prompt词的改变，每次又变脸了，但大模型似乎没有听懂我的<code class="language-plaintext highlighter-rouge">色素痣moles</code>，美女脸上依旧白皙无暇，后面出图也发现，并不能完全依赖输入词来决定图像内容。
+—</p>
+
+<h1 id="4-小结">4. 小结</h1>
+<p>    对比使用纸笔或ipad画画，ai作图<strong>成就感极低且不确定性极高</strong>，加上电脑配置不足导致出图时长过长，刚开始的新鲜感已被消耗殆尽。我在翻看c站模型时，发现这些看似精美的图片并没有像pinterest、behance、dribbble的作品一样让人眼前一亮。这些精美图片的出路在哪里？AIGC图片具有完美的但意料之中的视觉效果，但太过完美极易导致视觉疲劳。想要增加图像的吸引度，可增加图像的<strong>故事性、逻辑性、娱乐性、新颖性</strong>。例如创作具有故事性的连环画、创作不寻常的图片等，令图像具备超脱像素的信息量。下一集的目标将是制作一则连环画或是一则海龟汤~</p>
+<blockquote>
+  <p>未完待续……</p>
+</blockquote>
+
+
+                <hr>
+                <!-- 多说 Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/home/2023/12/14/TypeScript%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/" data-toggle="tooltip" data-placement="top" title="interface 还是 type?">&larr; Previous Post</a>
+                    </li>
+                    
+                    
+                </ul>
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+                
+
+            </div>
+
+
+
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    
+                    <!-- add XiaoHongshu, by Ming -->
+
+                    
+                    <li>
+                        <a class="mediaLink" target="_blank" href="https://www.xiaohongshu.com/user/profile/60ff6ac5000000000101f01e">
+                            <span class="fa-stack fa-lg">
+                                <svg t="1708518029406" class="otherMediaIcon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4240">
+                                    <path d="M512 512m-512 0a512 512 0 1 0 1024 0 512 512 0 1 0-1024 0Z" 
+                                        p-id="4241">
+                                    </path>
+                                    <path d="M780.288 487.424h26.112c4.096-38.912 2.048-40.96-26.112-36.352v36.352z m37.376 
+                                        109.568h53.248c0-16.384 0.512-31.232 0-46.08-0.512-9.728-7.168-15.36-18.432-15.36-23.552-0.512-47.104 
+                                        0-72.192 0v101.376h-54.784v-101.376H670.72v-47.104h53.248V450.56c-11.264-0.512-23.04-1.024-34.816-1.536v-46.592h34.816c1.024-5.632 
+                                        1.536-10.24 2.56-15.36h52.224c1.024 4.608 1.536 8.704 2.56 14.336 26.112 0 55.808 0.512 68.608 22.528 10.752 18.432 11.776 41.472 
+                                        17.408 64 0.512 0 5.12 0 9.216 0.512 29.184 2.56 47.616 18.432 49.152 43.52 1.024 22.016 1.024 43.52 0 65.536-1.536 26.112-23.04 
+                                        40.448-56.832 39.936-32.256-0.512-49.664-14.336-51.2-40.448z m-200.192-6.656h52.224v46.08H479.232c9.216-15.872 17.92-30.72 
+                                        27.136-46.592h53.248V449.536h-33.28v-46.592h124.416v46.08h-33.28v141.312zM432.64 497.664c-12.8-1.024-23.552-1.024-33.792-3.072-13.824-2.048-19.456-10.752-13.824-21.504 
+                                        14.848-27.648 30.208-54.784 45.568-82.432 1.536-2.56 7.168-4.096 10.752-4.096 14.336-0.512 28.16 0 45.056 0-12.8 23.04-25.088 45.056-37.376 
+                                        67.072l3.584 2.56c18.432-12.8 39.424-4.096 62.976-7.68-16.896 29.696-32.256 56.832-49.152 86.016 13.312 1.024 22.528 1.024 34.304 2.048-6.656 12.288-13.312 
+                                        23.552-20.48 34.816-1.024 2.048-5.632 3.584-8.192 3.584-16.896 0-33.792 1.024-50.688-0.512-18.432-1.536-24.576-10.752-17.408-25.6 8.704-16.896 18.432-33.28 
+                                        28.672-51.2M205.824 387.072h54.272c0.512 2.048 1.024 4.608 1.024 6.656V593.92c0 29.696-19.456 45.056-51.2 43.008-23.04-1.536-34.816-12.288-39.936-38.4 6.144 0 
+                                        11.776-0.512 17.408-0.512h17.92c0.512 0 0.512-210.944 0.512-210.944zM114.176 450.048h56.32c-11.264 55.808 1.536 114.176-42.496 166.4-10.752-17.408-19.968-32.768-29.184-48.64-1.024-1.536-1.024-3.584-1.024-5.632 
+                                        5.632-36.864 10.752-73.728 16.384-112.128m222.208 165.888c-41.472-51.2-30.208-109.568-39.936-165.888h55.296l7.68 82.944c0 1.536-0.512 3.072 0 4.608 13.824 
+                                        29.696-7.68 51.712-23.04 78.336m28.16 21.504c11.264-18.432 18.944-32.256 27.648-45.568 1.024-2.048 5.12-4.096 7.68-4.096 12.8 0.512 25.6 2.048 38.4 2.56 12.8 0.512 25.6 0 40.448 0-8.704 
+                                        15.36-16.896 28.672-25.088 42.496-1.536 2.048-5.12 4.608-7.68 4.608H364.544m506.88-188.928c0-9.216-1.024-17.92 0-26.624 1.536-12.288 14.336-20.992 28.16-19.968 13.312 
+                                        1.024 24.064 10.24 25.6 22.016 1.024 11.776-8.704 23.552-23.04 24.576-9.728 0.512-19.968 0-30.72 0" 
+                                        fill="#FFFFFF" p-id="4242">
+                                    </path>
+                                </svg>
+
+
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    
+                    <li>
+                        <a class="mediaLink" target="_blank" href="https://juejin.cn/user/1887224072513863">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-stack-1x fa-inverse">
+                                    <svg t="1708588646262" class="otherMediaIconInside juejinIcon" viewBox="0 0 1316 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4257">
+                                        <path 
+                                            class="mediaIconPath"
+                                            d="M643.181714 247.698286l154.916572-123.172572L643.181714 0.256 643.072 0l-154.660571 124.269714 154.660571 
+                                            123.245715 0.109714 0.182857z m0 388.461714h0.109715l399.579428-315.245714-108.361143-87.04-291.218285 229.888h-0.146286l-0.109714 
+                                            0.146285L351.817143 234.093714l-108.251429 87.04 399.433143 315.136 0.146286-0.146285z m-0.146285 215.552l0.146285-0.146286 
+                                            534.893715-422.034285 108.397714 87.04-243.309714 192L643.145143 1024 10.422857 525.056 0 516.754286l108.251429-86.893715L643.035429 
+                                            851.748571z" 
+                                            fill="#FFFFFF" 
+                                            p-id="4258">
+                                        </path>
+                                    </svg>
+                                </i>
+
+
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    
+                    
+                    <li>
+                        <a class="mediaLink" target="_blank" href="https://github.com/Ming">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Minghui Lv 2024
+                    <br>
+                    Theme by <a href="http://lvminghui.top">Ming</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://github.com/Ming-ux" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/home/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/home/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/home/js/hux-blog.js "></script>
+<script src="/home/js/test.js "></script>
+<script src="/home/js/tags.js "></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-49627206-1';
+    var _gaDomain = 'huangxuan.me';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '4cc1f2d8f3067386cc5cdb626a202900';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/home/img/favicon.ico">
+
+    <title>吕明慧的博客 | Ming's Blog</title>
+
+    <link rel="canonical" href="http://localhost:4000/home/404.html">
+
+
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/home/css/bootstrap.css">
+
+    <!-- Custom CSS -->
+    <!-- <link rel="stylesheet" href="/home/css/ming-blog.css"> -->
+
+    <!-- Ming add developing mode LESS -->
+    <link rel="stylesheet" href="/home/less/ming-blog.css">
+    <link rel="stylesheet" href="/home/less/page-default.css">
+    <link rel="stylesheet" href="/home/less/sidebar.css">
+
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/home/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    
+    <!-- Navigation -->
+<div class="container">
+	<div class="row">
+        <nav class="navbar navbar-float navbar-default navbar-custom navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand navbar-float-brand" href="/home/">
+                        <svg width="50px" height="50px" viewBox="0 0 135 135" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g class="navbar-brand-logo" stroke-width="18">
+                                    <g transform="translate(-0.000000, 0.000000)">
+                                        <g>
+                                            <rect x="9" y="9" width="117" height="41.2757068"></rect>
+                                            <rect x="9" y="84.7242932" width="117" height="41.2757068"></rect>
+                                        </g>
+                                        <line x1="53" y1="53" x2="81.8876861" y2="82.6176286"></line>
+                                    </g>
+                                </g>
+                            </g>
+                        </svg>
+                        <div>
+                            <div class="navbar-name">Minghui Lv</div>
+                            <div class="navbar-blog">Blog</div>
+                        </div>
+                    </a>
+                </div>
+        
+
+                <div id="huxblog_navbar">
+                    <div class="navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right navbar-float-right-bar">
+                            <li>
+                                <a class="navbar-float-right-brand" navbar-float-brand href="/home/">精选文章</a>
+                            </li>
+                            <!-- Traverse pages with html suffix in the root directory -->
+                            
+                            <li>
+                                <a class="navbar-float-right-brand" href="/home/knowledge/">知识点</a>
+                            </li>
+                            
+                            <li>
+                                <a class="navbar-float-right-brand" href="/home/tags/">tags</a>
+                            </li>
+                            
+                            <li>
+                                <a class="navbar-float-right-brand" href="/home/%E6%88%91/">关于「 我 」</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+        </nav>
+
+    </div>
+</div>
+
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Page Header -->
+<header class="intro-header" style="background-image: url('/home/img/404-bg.jpg')">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+				<div class="site-heading" id="tag-heading">
+					<h1>404</h1>
+					<span class="subheading">你来到了没有知识的荒原 :(</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+<script>
+	document.body.classList.add('page-fullscreen');
+</script>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    
+                    <!-- add XiaoHongshu, by Ming -->
+
+                    
+                    <li>
+                        <a class="mediaLink" target="_blank" href="https://www.xiaohongshu.com/user/profile/60ff6ac5000000000101f01e">
+                            <span class="fa-stack fa-lg">
+                                <svg t="1708518029406" class="otherMediaIcon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4240">
+                                    <path d="M512 512m-512 0a512 512 0 1 0 1024 0 512 512 0 1 0-1024 0Z" 
+                                        p-id="4241">
+                                    </path>
+                                    <path d="M780.288 487.424h26.112c4.096-38.912 2.048-40.96-26.112-36.352v36.352z m37.376 
+                                        109.568h53.248c0-16.384 0.512-31.232 0-46.08-0.512-9.728-7.168-15.36-18.432-15.36-23.552-0.512-47.104 
+                                        0-72.192 0v101.376h-54.784v-101.376H670.72v-47.104h53.248V450.56c-11.264-0.512-23.04-1.024-34.816-1.536v-46.592h34.816c1.024-5.632 
+                                        1.536-10.24 2.56-15.36h52.224c1.024 4.608 1.536 8.704 2.56 14.336 26.112 0 55.808 0.512 68.608 22.528 10.752 18.432 11.776 41.472 
+                                        17.408 64 0.512 0 5.12 0 9.216 0.512 29.184 2.56 47.616 18.432 49.152 43.52 1.024 22.016 1.024 43.52 0 65.536-1.536 26.112-23.04 
+                                        40.448-56.832 39.936-32.256-0.512-49.664-14.336-51.2-40.448z m-200.192-6.656h52.224v46.08H479.232c9.216-15.872 17.92-30.72 
+                                        27.136-46.592h53.248V449.536h-33.28v-46.592h124.416v46.08h-33.28v141.312zM432.64 497.664c-12.8-1.024-23.552-1.024-33.792-3.072-13.824-2.048-19.456-10.752-13.824-21.504 
+                                        14.848-27.648 30.208-54.784 45.568-82.432 1.536-2.56 7.168-4.096 10.752-4.096 14.336-0.512 28.16 0 45.056 0-12.8 23.04-25.088 45.056-37.376 
+                                        67.072l3.584 2.56c18.432-12.8 39.424-4.096 62.976-7.68-16.896 29.696-32.256 56.832-49.152 86.016 13.312 1.024 22.528 1.024 34.304 2.048-6.656 12.288-13.312 
+                                        23.552-20.48 34.816-1.024 2.048-5.632 3.584-8.192 3.584-16.896 0-33.792 1.024-50.688-0.512-18.432-1.536-24.576-10.752-17.408-25.6 8.704-16.896 18.432-33.28 
+                                        28.672-51.2M205.824 387.072h54.272c0.512 2.048 1.024 4.608 1.024 6.656V593.92c0 29.696-19.456 45.056-51.2 43.008-23.04-1.536-34.816-12.288-39.936-38.4 6.144 0 
+                                        11.776-0.512 17.408-0.512h17.92c0.512 0 0.512-210.944 0.512-210.944zM114.176 450.048h56.32c-11.264 55.808 1.536 114.176-42.496 166.4-10.752-17.408-19.968-32.768-29.184-48.64-1.024-1.536-1.024-3.584-1.024-5.632 
+                                        5.632-36.864 10.752-73.728 16.384-112.128m222.208 165.888c-41.472-51.2-30.208-109.568-39.936-165.888h55.296l7.68 82.944c0 1.536-0.512 3.072 0 4.608 13.824 
+                                        29.696-7.68 51.712-23.04 78.336m28.16 21.504c11.264-18.432 18.944-32.256 27.648-45.568 1.024-2.048 5.12-4.096 7.68-4.096 12.8 0.512 25.6 2.048 38.4 2.56 12.8 0.512 25.6 0 40.448 0-8.704 
+                                        15.36-16.896 28.672-25.088 42.496-1.536 2.048-5.12 4.608-7.68 4.608H364.544m506.88-188.928c0-9.216-1.024-17.92 0-26.624 1.536-12.288 14.336-20.992 28.16-19.968 13.312 
+                                        1.024 24.064 10.24 25.6 22.016 1.024 11.776-8.704 23.552-23.04 24.576-9.728 0.512-19.968 0-30.72 0" 
+                                        fill="#FFFFFF" p-id="4242">
+                                    </path>
+                                </svg>
+
+
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    
+                    <li>
+                        <a class="mediaLink" target="_blank" href="https://juejin.cn/user/1887224072513863">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-stack-1x fa-inverse">
+                                    <svg t="1708588646262" class="otherMediaIconInside juejinIcon" viewBox="0 0 1316 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4257">
+                                        <path 
+                                            class="mediaIconPath"
+                                            d="M643.181714 247.698286l154.916572-123.172572L643.181714 0.256 643.072 0l-154.660571 124.269714 154.660571 
+                                            123.245715 0.109714 0.182857z m0 388.461714h0.109715l399.579428-315.245714-108.361143-87.04-291.218285 229.888h-0.146286l-0.109714 
+                                            0.146285L351.817143 234.093714l-108.251429 87.04 399.433143 315.136 0.146286-0.146285z m-0.146285 215.552l0.146285-0.146286 
+                                            534.893715-422.034285 108.397714 87.04-243.309714 192L643.145143 1024 10.422857 525.056 0 516.754286l108.251429-86.893715L643.035429 
+                                            851.748571z" 
+                                            fill="#FFFFFF" 
+                                            p-id="4258">
+                                        </path>
+                                    </svg>
+                                </i>
+
+
+                            </span>
+                        </a>
+                    </li>
+                    
+
+                    
+                    
+                    <li>
+                        <a class="mediaLink" target="_blank" href="https://github.com/Ming">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Minghui Lv 2024
+                    <br>
+                    Theme by <a href="http://lvminghui.top">Ming</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://github.com/Ming-ux" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/home/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/home/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/home/js/hux-blog.js "></script>
+<script src="/home/js/test.js "></script>
+<script src="/home/js/tags.js "></script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-49627206-1';
+    var _gaDomain = 'huangxuan.me';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '4cc1f2d8f3067386cc5cdb626a202900';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
