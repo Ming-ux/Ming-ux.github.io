@@ -41,7 +41,7 @@
                                 <a href="{{ site.baseurl }}/">精选文章</a>
                             </li>
                             <!-- Traverse pages with html suffix in the root directory -->
-                            {% for page in site.pages %}{% if page.title %}
+                            {% for page in site.pages %}{% if page.title and page.ext == '.html'%}
                             <li>
                                 <a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
                             </li>
