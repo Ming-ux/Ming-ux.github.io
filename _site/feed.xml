@@ -3,10 +3,10 @@
   <channel>
     <title>Minghui Lv</title>
     <description></description>
-    <link>http://localhost:4000/home/</link>
-    <atom:link href="http://localhost:4000/home/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 22 Apr 2024 21:23:48 +0800</pubDate>
-    <lastBuildDate>Mon, 22 Apr 2024 21:23:48 +0800</lastBuildDate>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Mon, 22 Apr 2024 21:53:26 +0800</pubDate>
+    <lastBuildDate>Mon, 22 Apr 2024 21:53:26 +0800</lastBuildDate>
     <generator>Jekyll v4.3.3</generator>
     
       <item>
@@ -22,8 +22,8 @@
 
 </description>
         <pubDate>Mon, 22 Apr 2024 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/home/2024/04/22/gitLens%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD%E8%AF%A6%E8%A7%A3/</link>
-        <guid isPermaLink="true">http://localhost:4000/home/2024/04/22/gitLens%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD%E8%AF%A6%E8%A7%A3/</guid>
+        <link>http://localhost:4000/2024/04/22/gitLens%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD%E8%AF%A6%E8%A7%A3/</link>
+        <guid isPermaLink="true">http://localhost:4000/2024/04/22/gitLens%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD%E8%AF%A6%E8%A7%A3/</guid>
         
         
       </item>
@@ -53,7 +53,7 @@ AUTOMATIC1111开发的SDwebUI项目代码&lt;/a&gt;到本地&lt;/li&gt;
   &lt;li&gt;打开stable diffusion项目代码找到webUI.sh脚本用终端打开运行，脚本自动帮你下载项目依赖，下载成功后自动打开浏览器展示页面（如图1）。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div align=&quot;center&quot;&gt;&lt;img src=&quot;http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_01.jpg&quot; alt=&quot;模型运行后打开local URL即可预览&quot; width=&quot;60%&quot; /&gt;&lt;/div&gt;
+&lt;div align=&quot;center&quot;&gt;&lt;img src=&quot;/img/for-post/01_stablediffusion_01.jpg&quot; alt=&quot;模型运行后打开local URL即可预览&quot; width=&quot;60%&quot; /&gt;&lt;/div&gt;
 &lt;div align=&quot;center&quot;&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
 
 &lt;blockquote&gt;
@@ -63,7 +63,7 @@ AUTOMATIC1111开发的SDwebUI项目代码&lt;/a&gt;到本地&lt;/li&gt;
 &lt;ul&gt;
   &lt;li&gt;打开浏览器，看到web ui就成功了，开始作图吧~&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div align=&quot;center&quot;&gt;&lt;img src=&quot;http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_03.jpg&quot; alt=&quot;模型运行后打开local URL即可预览&quot; width=&quot;80%&quot; /&gt;&lt;/div&gt;
+&lt;div align=&quot;center&quot;&gt;&lt;img src=&quot;/img/for-post/01_stablediffusion_03.jpg&quot; alt=&quot;模型运行后打开local URL即可预览&quot; width=&quot;80%&quot; /&gt;&lt;/div&gt;
 
 &lt;h1 id=&quot;2-modal下载&quot;&gt;2. Modal下载&lt;/h1&gt;
 &lt;p&gt;共享模型和数据集的平台有：&lt;/p&gt;
@@ -278,8 +278,8 @@ AUTOMATIC1111开发的SDwebUI项目代码&lt;/a&gt;到本地&lt;/li&gt;
 &lt;/blockquote&gt;
 </description>
         <pubDate>Thu, 04 Jan 2024 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/home/2024/01/04/stable-diffusion-first-time/</link>
-        <guid isPermaLink="true">http://localhost:4000/home/2024/01/04/stable-diffusion-first-time/</guid>
+        <link>http://localhost:4000/2024/01/04/stable-diffusion-first-time/</link>
+        <guid isPermaLink="true">http://localhost:4000/2024/01/04/stable-diffusion-first-time/</guid>
         
         <category>2024</category>
         
@@ -381,8 +381,8 @@ AUTOMATIC1111开发的SDwebUI项目代码&lt;/a&gt;到本地&lt;/li&gt;
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 14 Dec 2023 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/home/2023/12/14/TypeScript%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</link>
-        <guid isPermaLink="true">http://localhost:4000/home/2023/12/14/TypeScript%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</guid>
+        <link>http://localhost:4000/2023/12/14/TypeScript%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</link>
+        <guid isPermaLink="true">http://localhost:4000/2023/12/14/TypeScript%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/</guid>
         
         <category>2023</category>
         

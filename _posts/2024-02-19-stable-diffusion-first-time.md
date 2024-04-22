@@ -27,13 +27,13 @@ tags:
 AUTOMATIC1111开发的SDwebUI项目代码](https://github.com/AUTOMATIC1111/stable-diffusion-webui)到本地
 - 打开stable diffusion项目代码找到webUI.sh脚本用终端打开运行，脚本自动帮你下载项目依赖，下载成功后自动打开浏览器展示页面（如图1）。
 
-<div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_01.jpg" alt="模型运行后打开local URL即可预览" width="60%"></div>
+<div align="center"><img src="/img/for-post/01_stablediffusion_01.jpg" alt="模型运行后打开local URL即可预览" width="60%"></div>
 <div align="center"><span></span></div>
 
 > 图片中**stable diffusion model failed to load**是因为初始项目model文件夹为空，因此无法加载模型，可在ai大模型素材网站[civitai](https://civitai.com/)和[hugging face](https://huggingface.co/)手动下载想要到模型到**models**文件夹即可。
 
 - 打开浏览器，看到web ui就成功了，开始作图吧~
-<div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_03.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
+<div align="center"><img src="/img/for-post/01_stablediffusion_03.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
 
 # 2. Modal下载
 共享模型和数据集的平台有：
