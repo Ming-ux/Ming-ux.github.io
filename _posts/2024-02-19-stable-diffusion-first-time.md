@@ -68,66 +68,66 @@ AUTOMATIC1111开发的SDwebUI项目代码](https://github.com/AUTOMATIC1111/stab
 
 - 模型推荐：
   - Anything | 万象熔炉 （日漫）
-  <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_04.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
+  <div align="center"><img src="/img/for-post/01_stablediffusion_04.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
 
   - Counterfeit V2.5 （日漫）
-  <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_05.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
+  <div align="center"><img src="/img/for-post/01_stablediffusion_05.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
 
   - Dreamlike Diffusion（梦幻、赛博）
-  <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_06.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
+  <div align="center"><img src="/img/for-post/01_stablediffusion_06.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
 
 ### 2.3.2 写实派模型
 - 搜索关键词：Photography, photo, realistic, photorealistic, RAW photo
 - 模型推荐：
   - Realistic Stock Photo
-    <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_07.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
+    <div align="center"><img src="/img/for-post/01_stablediffusion_07.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
   - Realistic Vision
-    <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_08.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
+    <div align="center"><img src="/img/for-post/01_stablediffusion_08.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
 
 ### 2.3.3 Q版真人模型
 - 搜索关键词：3D, render, chibi, digital art, concept art
 
 - 模型推荐：
   - Q版风格 CHIBI
-    <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_09.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
+    <div align="center"><img src="/img/for-post/01_stablediffusion_09.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
   - Never Ending Dream (NED)
-    <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_10.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
+    <div align="center"><img src="/img/for-post/01_stablediffusion_10.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
   - Protogen(Realistic)
-    <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_11.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
+    <div align="center"><img src="/img/for-post/01_stablediffusion_11.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
   - 国风(GuoFeng3)
-    <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_12.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
+    <div align="center"><img src="/img/for-post/01_stablediffusion_12.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
 ### 2.3.4 产品设计
 - 搜索关键词：product design 
 - 模型推荐：
   - Product Design (Realistic minimalism-eddiemauro)
-    <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_13.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
+    <div align="center"><img src="/img/for-post/01_stablediffusion_13.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
   - Product Design (Tech minimalism-eddiemauro) LORA
-    <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_14.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
+    <div align="center"><img src="/img/for-post/01_stablediffusion_14.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
 
 ### 2.3.5 UI设计
 - 模型推荐：
   - APP ICONS - SDXL
-    <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_15.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
+    <div align="center"><img src="/img/for-post/01_stablediffusion_15.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
 
 ### 2.3.6 建筑设计
 - 模型推荐：
   - architecture_Exterior_SDlife_Chiasedamme
-    <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_16.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
+    <div align="center"><img src="/img/for-post/01_stablediffusion_16.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
 ### 2.3.7 海报设计
 - 模型推荐
   - Movie Poster （文字部分可看出毫无逻辑😰）
-    <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_17.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
+    <div align="center"><img src="/img/for-post/01_stablediffusion_17.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
 
 ### 2.3.8 风格插画
 - 模型推荐：
   - SDVN7-NijiStyleXL （绝美的一个风格）
-    <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_18.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
+    <div align="center"><img src="/img/for-post/01_stablediffusion_18.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
 
 
 # 3. 图片生成初体验
 - 选用模型：Realistic vision
 - 参数调节：选定某张图片后，可抄目标图片右侧参数作业。
-    <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_19.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
+    <div align="center"><img src="/img/for-post/01_stablediffusion_19.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
 
 
 ---
@@ -138,7 +138,7 @@ AUTOMATIC1111开发的SDwebUI项目代码](https://github.com/AUTOMATIC1111/stab
 **耗时**：56sec   
 **出图大小**：512*512；329kb   
 **成品**：
-<div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_21.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
+<div align="center"><img src="/img/for-post/01_stablediffusion_21.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>
 **存在的问题**：皮肤模糊，高光太虚，画质不高。
 **改进方式**：使用hires.fix高清修复功能，调高scale为1.4，步数为10，denoising strength为0.5。
 
@@ -148,7 +148,7 @@ AUTOMATIC1111开发的SDwebUI项目代码](https://github.com/AUTOMATIC1111/stab
 **耗时**：61sec   
 **出图大小**：512*512；632kb   
 **成品**：
-<div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_22.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>   
+<div align="center"><img src="/img/for-post/01_stablediffusion_22.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>   
 **结论**：画质确实清晰了一倍，达到632kb,但seed变成随意后美女完全变了。增加sampling steps作用不大，但增加scale作用显著。另外，把图一直放着，就会根据这个图不断生成。保留该张图片的seed重新制作第三张。
 
 ---
@@ -156,7 +156,7 @@ AUTOMATIC1111开发的SDwebUI项目代码](https://github.com/AUTOMATIC1111/stab
 **耗时**：73sec   
 **出图大小**：512*512；1.2M   
 **成品**：
-<div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_23.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>   
+<div align="center"><img src="/img/for-post/01_stablediffusion_23.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>   
 **结论**：将scale调为2，画质已经没有明显变化，但图片体积仍然翻倍。保留seed后美女似乎保持了同一个人，但仔细观察头发、眼睛却有了细微变化。为了增加真实感，增加斑点、高光`high light on skin, two small moles`prompt词制作第四张图。  
 
 ---
@@ -165,7 +165,7 @@ AUTOMATIC1111开发的SDwebUI项目代码](https://github.com/AUTOMATIC1111/stab
 **耗时**：75sec   
 **出图大小**：512*512；1.2M   
 **成品**：
-<div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_24.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>   
+<div align="center"><img src="/img/for-post/01_stablediffusion_24.jpg" alt="模型运行后打开local URL即可预览" width="80%"></div>   
 **结论**：由于prompt词的改变，每次又变脸了，但大模型似乎没有听懂我的`色素痣moles`，美女脸上依旧白皙无暇，后面出图也发现，并不能完全依赖输入词来决定图像内容。
 ---
 

@@ -7,7 +7,7 @@ header-img: "/img/tags-bg.jpg"
 ---
 
 <!-- Page Header -->
-<header class="intro-tags-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+<header class="intro-tags-header" style="background-image: url('{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
     <div class="container">
         <div class="row">
             <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
