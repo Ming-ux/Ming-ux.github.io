@@ -5,28 +5,9 @@
     <description></description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 22 Apr 2024 22:58:36 +0800</pubDate>
-    <lastBuildDate>Mon, 22 Apr 2024 22:58:36 +0800</lastBuildDate>
+    <pubDate>Mon, 22 Apr 2024 23:16:21 +0800</pubDate>
+    <lastBuildDate>Mon, 22 Apr 2024 23:16:21 +0800</lastBuildDate>
     <generator>Jekyll v4.3.3</generator>
-    
-      <item>
-        <title>Gitlens常用功能详解</title>
-        <description>&lt;h1 id=&quot;命令行操作与gitlens操作&quot;&gt;命令行操作与gitLens操作&lt;/h1&gt;
-
-&lt;p&gt;进行了某些代码修改如下：
-&lt;img src=&quot;image.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;(命令行)提交到暂存区 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git add .&lt;/code&gt;
-(gitLens):
-&lt;img src=&quot;image-1.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 22 Apr 2024 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2024/04/22/gitLens%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD%E8%AF%A6%E8%A7%A3/</link>
-        <guid isPermaLink="true">http://localhost:4000/2024/04/22/gitLens%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD%E8%AF%A6%E8%A7%A3/</guid>
-        
-        
-      </item>
     
       <item>
         <title>stable diffusion webUI项目启动流程和若干个模型尝试</title>

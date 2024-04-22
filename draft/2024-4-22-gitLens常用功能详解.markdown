@@ -1,0 +1,24 @@
+---
+layout:     post
+title:      "gitLens操作"
+subtitle:   "“TypeScript进阶用法”"
+date:       2023-12-14
+author:     "Lyuminghui"
+header-img: "/img/for-post/TypeScript-cover.jpg"
+tags:
+    - 2023
+    - TypeScript
+    - 精选
+---
+
+
+
+# 命令行操作与gitLens操作
+
+进行了某些代码修改如下：
+![alt text](image.png)
+
+(命令行)提交到暂存区 `git add .`
+(gitLens):
+![alt text](image-1.png)
+

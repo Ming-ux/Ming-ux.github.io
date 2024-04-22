@@ -41,7 +41,7 @@
                             </li>
                             <!-- Traverse pages with html suffix in the root directory -->
                             {% for page in site.pages %}
-                            {% if page.title %}
+                            {% if page.title and page.ext != '.md'%}
                             <li>
                                 <a class="navbar-float-right-brand" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
                             </li>
