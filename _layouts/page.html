@@ -1,0 +1,225 @@
+---
+layout: default
+---
+
+<style type="text/css">
+    header.intro-header{
+        background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}');
+    }
+</style>
+<header class="intro-header page-default" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+                <div class="page-default-heading">
+                    <h1 class="page-default-h">{{ page.title }}</h1>
+                    <p class="page-default-description">{{ page.description }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content -->
+<div class="container">
+	<div class="row">
+
+    {% if site.sidebar == false %}
+    <!-- NO SIDEBAR -->
+        <!-- Sidebar Container -->
+        <div class="
+            col-lg-8 col-lg-offset-2
+            col-md-10 col-md-offset-1
+            sidebar-container">
+
+            <!-- Featured Tags -->
+            {% if site.featured-tags %}
+            <section>
+                <!-- no hr -->
+                <h5><a href="{{'/tags/' | prepend: site.baseurl }}">FEATURED TAGS</a></h5>
+                <div class="tags">
+                    {% for tag in site.tags %}
+                        {% if tag[1].size > {{site.featured-condition-size}} %}
+                            <a href="{{ site.baseurl }}/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
+                                {{ tag[0] }}
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </section>
+            {% endif %}
+
+            <!-- Friends Blog -->
+            {% if site.friends %}
+            <hr>
+            <h5>感兴趣的人</h5>
+            <ul class="list-inline">
+                {% for friend in site.friends %}
+                    <li><a href="{{friend.href}}">{{friend.title}}</a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+    <!-- Post Container -->
+        <div class="
+            col-lg-8 col-lg-offset-2 
+            col-md-10 col-md-offset-1 
+            post-container
+            page-default-container">
+            {{ content }}
+        </div>
+
+    {% else %}
+
+
+    <!-- USE SIDEBAR -->
+    <!-- Post Container -->
+    		<div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+                page-default-container
+            ">
+                <!-- posts inject -->
+    			{{ content }}
+    		</div>
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+                <!-- Featured Tags -->
+                {% if site.featured-tags %}
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="{{'/tags/' | prepend: site.baseurl }}">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        {% for tag in site.tags %}
+                            {% if tag[1].size > {{site.featured-condition-size}} %}
+                                <a href="{{ site.baseurl }}/tags/#{{ tag[0] }}" title="{{ tag[0] }}" rel="{{ tag[1].size }}">
+                                    {{ tag[0] }}
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </section>
+                {% endif %}
+
+                <!-- Short About -->
+                <section class="visible-md visible-lg">
+                    <hr><h5><a href="{{'/about/' | prepend: site.baseurl }}">ABOUT ME</a></h5>
+                    <div class="short-about">
+                        {% if site.sidebar-avatar %}
+                            <img src="{{site.sidebar-avatar}}" />
+                        {% endif %}
+                        {% if site.sidebar-about-description %}
+                            <p>{{site.sidebar-about-description}}</p>
+                        {% endif %}
+                        <!-- SNS Link -->
+                        <ul class="list-inline">
+
+                            {% if site.twitter_username %}
+                            <li>
+                                <a href="https://twitter.com/{{ site.twitter_username }}">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if site.zhihu_username %}
+                            <li>
+                                <a target="_blank" href="https://www.zhihu.com/people/{{ site.zhihu_username }}">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa  fa-stack-1x fa-inverse">知</i>
+                                    </span>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if site.xiaohongshu_username %}
+                            <li>
+                                <a target="_blank" href="https://www.xiaohongshu.com/user/profile/{{ site.xiaohongshu_username }}">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-stack-1x fa-inverse" style="padding:3px 0px">
+                                            <svg t="1708518029406" width="30px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4240">
+                                                <path d="M780.288 487.424h26.112c4.096-38.912 2.048-40.96-26.112-36.352v36.352z m37.376 
+                                                    109.568h53.248c0-16.384 0.512-31.232 0-46.08-0.512-9.728-7.168-15.36-18.432-15.36-23.552-0.512-47.104 
+                                                    0-72.192 0v101.376h-54.784v-101.376H670.72v-47.104h53.248V450.56c-11.264-0.512-23.04-1.024-34.816-1.536v-46.592h34.816c1.024-5.632 
+                                                    1.536-10.24 2.56-15.36h52.224c1.024 4.608 1.536 8.704 2.56 14.336 26.112 0 55.808 0.512 68.608 22.528 10.752 18.432 11.776 41.472 
+                                                    17.408 64 0.512 0 5.12 0 9.216 0.512 29.184 2.56 47.616 18.432 49.152 43.52 1.024 22.016 1.024 43.52 0 65.536-1.536 26.112-23.04 
+                                                    40.448-56.832 39.936-32.256-0.512-49.664-14.336-51.2-40.448z m-200.192-6.656h52.224v46.08H479.232c9.216-15.872 17.92-30.72 
+                                                    27.136-46.592h53.248V449.536h-33.28v-46.592h124.416v46.08h-33.28v141.312zM432.64 497.664c-12.8-1.024-23.552-1.024-33.792-3.072-13.824-2.048-19.456-10.752-13.824-21.504 
+                                                    14.848-27.648 30.208-54.784 45.568-82.432 1.536-2.56 7.168-4.096 10.752-4.096 14.336-0.512 28.16 0 45.056 0-12.8 23.04-25.088 45.056-37.376 
+                                                    67.072l3.584 2.56c18.432-12.8 39.424-4.096 62.976-7.68-16.896 29.696-32.256 56.832-49.152 86.016 13.312 1.024 22.528 1.024 34.304 2.048-6.656 12.288-13.312 
+                                                    23.552-20.48 34.816-1.024 2.048-5.632 3.584-8.192 3.584-16.896 0-33.792 1.024-50.688-0.512-18.432-1.536-24.576-10.752-17.408-25.6 8.704-16.896 18.432-33.28 
+                                                    28.672-51.2M205.824 387.072h54.272c0.512 2.048 1.024 4.608 1.024 6.656V593.92c0 29.696-19.456 45.056-51.2 43.008-23.04-1.536-34.816-12.288-39.936-38.4 6.144 0 
+                                                    11.776-0.512 17.408-0.512h17.92c0.512 0 0.512-210.944 0.512-210.944zM114.176 450.048h56.32c-11.264 55.808 1.536 114.176-42.496 166.4-10.752-17.408-19.968-32.768-29.184-48.64-1.024-1.536-1.024-3.584-1.024-5.632 
+                                                    5.632-36.864 10.752-73.728 16.384-112.128m222.208 165.888c-41.472-51.2-30.208-109.568-39.936-165.888h55.296l7.68 82.944c0 1.536-0.512 3.072 0 4.608 13.824 
+                                                    29.696-7.68 51.712-23.04 78.336m28.16 21.504c11.264-18.432 18.944-32.256 27.648-45.568 1.024-2.048 5.12-4.096 7.68-4.096 12.8 0.512 25.6 2.048 38.4 2.56 12.8 0.512 25.6 0 40.448 0-8.704 
+                                                    15.36-16.896 28.672-25.088 42.496-1.536 2.048-5.12 4.608-7.68 4.608H364.544m506.88-188.928c0-9.216-1.024-17.92 0-26.624 1.536-12.288 14.336-20.992 28.16-19.968 13.312 
+                                                    1.024 24.064 10.24 25.6 22.016 1.024 11.776-8.704 23.552-23.04 24.576-9.728 0.512-19.968 0-30.72 0" 
+                                                    fill="#FFFFFF" p-id="4242">
+                                                </path>
+                                            </svg>
+                                        </i>
+                                    </span>
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% if site.juejin_username %}
+                            <li>
+                                <a target="_blank" href="https://juejin.cn/user/{{ site.juejin_username }}">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-stack-1x fa-inverse">
+                                            <svg t="1708588646262" width="20px" viewBox="0 0 1316 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4257">
+                                                <path 
+                                                    d="M643.181714 247.698286l154.916572-123.172572L643.181714 0.256 643.072 0l-154.660571 124.269714 154.660571 
+                                                    123.245715 0.109714 0.182857z m0 388.461714h0.109715l399.579428-315.245714-108.361143-87.04-291.218285 229.888h-0.146286l-0.109714 
+                                                    0.146285L351.817143 234.093714l-108.251429 87.04 399.433143 315.136 0.146286-0.146285z m-0.146285 215.552l0.146285-0.146286 
+                                                    534.893715-422.034285 108.397714 87.04-243.309714 192L643.145143 1024 10.422857 525.056 0 516.754286l108.251429-86.893715L643.035429 
+                                                    851.748571z" 
+                                                    fill="#FFFFFF" 
+                                                    p-id="4258">
+                                                </path>
+                                            </svg>
+                                        </i>
+                                    </span>
+                                </a>
+                            </li>
+                            {% endif %}
+
+                            {% if site.github_username %}
+                            <li>
+                                <a target="_blank" href="https://github.com/{{ site.github_username }}">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </section>
+                <!-- Friends Blog -->
+                {% if site.friends %}
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+                    {% for friend in site.friends %}
+                        <li><a href="{{friend.href}}">{{friend.title}}</a></li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+    		</div>
+        {% endif %}
+	</div>
+</div>

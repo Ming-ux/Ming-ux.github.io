@@ -1,0 +1,107 @@
+---
+title: tags
+permalink: /tags/
+layout: default
+description: 所有文章，整理于此。
+header-img: "/img/tags-bg.jpg"
+---
+
+<!-- Page Header -->
+<header class="intro-tags-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+                <div class="site-tags-heading">
+                    <h1>Good good study,</h1>
+					<h1>day day up.</h1>
+                    <span class="subheading">{{ page.description }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+	<div class="row">
+		<div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+            <!-- 标签云 -->
+			<div id='tag_cloud' class="tags js-tags">
+				<a class="tag-button tag-button-all" data-encode="" >
+					Show All
+					<sup>{{site.posts.size}}</sup>
+				</a>
+				{% capture tags %}
+				{% for tag in site.tags %}
+				<a class="tag-button" data-sort="{{ site.posts.size | minus: tag[1].size | prepend: '0000' | slice: -4, 4 }}"
+					data-encode="{{ tag[0] | strip | url_encode }}"  title="{{ tag[0] }}"
+					rel="{{ tag[1].size }}">
+					
+					{{ tag[0] }}
+					<sup>{{tag[1].size}}</sup>
+				</a>
+				{% endfor %}
+				{% endcapture %}
+				{{ tags | split:'__SEPERATOR__' | sort }}
+			</div>
+			<!-- Article List -->
+			<div class="mini-post-list js-result d-none">
+				<!-- 文章按照日期降序排序 -->
+				{%- assign _sorted_list = site.posts -%}
+				{%- assign _sorted_list = _sorted_list | sort: 'date' -%}
+				{%- assign _sorted_list = _sorted_list | reverse -%}
+
+				{%- for _article in _sorted_list -%}
+				{%- assign _tags = '' -%}
+				{%- for _tag in _article.tags -%}
+				{%- assign _tag_encode = _tag | strip | url_encode -%}
+				{%- if forloop.last -%}
+				{%- assign _tags = _tags | append: _tag_encode -%}
+				{%- else -%}
+				{%- assign _tags = _tags | append: _tag_encode | append: ',' -%}
+				{%- endif -%}
+				{%- endfor -%}
+
+				{% comment %} group by year {% endcomment %}
+				{%- assign _currentdate = _article.date | date: '%Y' -%}
+				{%- if _currentdate != _date -%}
+				{%- unless forloop.first -%}</section>{%- endunless -%}
+				<section>
+					<span class="fa listing-seperator">
+						<span class="tag-text">{{ _currentdate }}</span>
+					</span>
+					{%- assign _date = _currentdate -%}
+					{%- endif -%}
+
+					<div class="tags-post-preview item" data-tags="{{ _tags }}">
+						<a href="{{ _article.url | prepend: site.baseurl }}">
+							<div>
+								<img class="tags-post-img" src={{_article.header-img | prepend: site.baseurl}} style="background-image:url('{{_article.header-img | prepend: site.baseurl}}')"/>
+							</div>
+							<div>
+								<h2 class="post-title">
+									{{ _article.title }}
+								</h2>
+								{% if _article.subtitle %}
+								<h3 class="post-subtitle">
+									{{ _article.subtitle }}
+								</h3>
+								<div class="post-content-preview first-post-content-preview">
+									{{ _article.content | strip_html | truncate:200 }}
+								</div>
+								<p class="post-meta">
+									Posted by {% if post.author %}{{ _article.author }}{% else %}{{ site.title }}{% endif %} on {{ first_select_post.date | date: "%B %-d, %Y" }}
+								</p>
+							</div>
+
+							{% endif %}
+						</a>
+						<hr>
+					</div>
+					{%- if forloop.last -%}
+				</section>{%- endif -%}
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>

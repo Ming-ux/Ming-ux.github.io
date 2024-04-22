@@ -1,0 +1,101 @@
+---
+layout: page
+title: 关于「 我 」
+description: "Hi, this is Ming."
+header-img: "/img/about-me.jpg"
+---
+
+
+<!-- Chinese Version -->
+
+    <div class="zh post-container">
+        <div>
+            <div style="font-size:48px">👋 Hello</div>
+            <hr>
+
+            我是吕明慧(Ming)，一个设计出身，喜欢页面开发的前端er。目前准备入职携程担任前端工程师。
+            <br><br>
+            你可以在这个博客平台的「精选文章」、「Tags」中阅读我发表的技术文章，在「知识点」中查看我平常学习到的的计算机、前端工程、设计等知识。
+            <br><br>
+            该博客平台我参考 <a href="https://huangxuan.me/">@Hux</a> 和 <a href="https://yual.in/">@Yuanlin Lin</a> 的博客，使用jekyll、Liquid、boostrap搭建而成。仓库请挪步到<a href="https://github.com/Ming-ux">Ming Blog</a>
+        </div>
+    </div>
+    
+    <hr>
+    
+    <!-- English Version -->
+    <div class="en post-container">
+        <div>
+            Hello! I'm Ming, a front-end developer who has a keen interest in page development with a design background. I'm currently preparing to join Ctrip as a front-end engineer. 
+            <br><br>
+            You can check out the technical articles I've published in the "Selected Articles" and "Tags" sections of this blog. 
+            Additionally, you can explore the "Knowledge" area to see what I've been learning about computer science, front-end engineering, design, and more.
+            <br><br>
+            I drew inspiration for this blog platform from the works of <a href="https://huangxuan.me/">@Hux</a> and <a href="https://yual.in/">@Yuanlin Lin</a>. It's built using Jekyll, Liquid, and Bootstrap. You can find the repository for this blog at <a href="https://github.com/Ming-ux">Ming Blog</a>.
+        </div>
+    </div>
+
+
+
+
+{% if site.duoshuo_username %}
+<!-- 多说评论框 start -->
+<div class="comment">
+    <div class="ds-thread"
+    {% if site.duoshuo_username == "huxblog" %}
+        data-thread-id="1187623191091085319"
+    {% else %}
+        data-thread-key="{{site.duoshuo_username}}/about"
+    {% endif %}
+
+    data-title="{{page.title}}"
+    data-url="{{site.url}}/about/"></div>
+</div>
+<!-- 多说评论框 end -->
+
+<!-- Duoshuo hacking -->
+<input id="dsUser" type="hidden" value="{{site.duoshuo_username}}"  />
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User hacking by Hux
+    var _user = document.getElementById('dsUser').value;
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+{% endif %}
+
+
+{% if site.disqus_username %}
+<!-- disqus 评论框 start -->
+<div class="comment">
+    <div id="disqus_thread" class="disqus-thread">
+
+    </div>
+</div>
+<!-- disqus 评论框 end -->
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "{{site.disqus_username}}";
+    var disqus_identifier = "{{site.disqus_username}}/{{page.url}}";
+    var disqus_url = "{{site.url}}{{page.url}}";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+{% endif %}
