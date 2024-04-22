@@ -10,8 +10,6 @@ or run `jekyll serve --watch`, but this one can not hot refresh. So the previous
 when in developing, save ming-blog.less and it can automatically trans into ming-blog.css which can be use in preview.
 when in production, copy the final .css into the css file. no more less file in production.
 
-because jekyll build file in _site, but gitpage only can host /root or /docs into site. So at every push, I use `jekyll build --source . --destination docs` to put the building file into to docs manually.
-
 ### Variable
 | Variable     | file name | Description |
 | ----------- | ----------- | -------- |

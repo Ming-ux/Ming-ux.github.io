@@ -11,9 +11,9 @@
     <meta name="keyword"  content="">
     <link rel="shortcut icon" href="/home/img/favicon.ico">
 
-    <title>stable diffusion webUI项目启动流程和若干个模型尝试 - 吕明慧的博客 | Ming's Blog</title>
+    <title>interface 还是 type? - 吕明慧的博客 | Ming's Blog</title>
 
-    <link rel="canonical" href="http://localhost:4000/home/2024/01/04/stable-diffusion-first-time/">
+    <link rel="canonical" href="http://lvminghui.top/home/2023/12/14/TypeScript%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/">
 
 
 
@@ -160,13 +160,13 @@
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="/home//img/for-post/01_stablediffusion.jpg" width="0" height="0"> -->
+<!-- <img src="/home//img/for-post/TypeScript-cover.jpg" width="0" height="0"> -->
 
 <!-- 单篇文章 -->
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
-        background-image: url('/home//img/for-post/01_stablediffusion.jpg');
+        background-image: url('/home//img/for-post/TypeScript-cover.jpg');
 
     }
 </style>
@@ -177,21 +177,19 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/home/tags/#2024" title="2024">2024</a>
+                        <a class="tag" href="/home/tags/#2023" title="2023">2023</a>
                         
-                        <a class="tag" href="/home/tags/#AIGC" title="AIGC">AIGC</a>
-                        
-                        <a class="tag" href="/home/tags/#stable diffusion" title="stable diffusion">stable diffusion</a>
+                        <a class="tag" href="/home/tags/#TypeScript" title="TypeScript">TypeScript</a>
                         
                         <a class="tag" href="/home/tags/#精选" title="精选">精选</a>
                         
                     </div>
-                    <h1>stable diffusion webUI项目启动流程和若干个模型尝试</h1>
+                    <h1>interface 还是 type?</h1>
                     
                     
-                    <h2 class="subheading">“选择mac运行stable diffusion webUI真实一大错误。占用内存不断增加，使用流畅度不断降低，性能不够导致出图超慢，刚开始的好奇心已经逐步被所剩无几的耐心所打败。”</h2>
+                    <h2 class="subheading">“interface还是type两者非常相似，好像哪个都可以，但实际真的如此吗？”</h2>
                     
-                    <span class="meta">Posted by Lyuminghui on January 4, 2024</span>
+                    <span class="meta">Posted by Lyuminghui on December 14, 2023</span>
                 </div>
             </div>
         </div>
@@ -225,28 +223,8 @@
                                     
                                         
                                         <li>
-                                        <a href="#sdwebui体验">
-                                            SDWebUI体验
-                                        </a>
-                                        </li>
-                                        
-            
-                                        
-                                    
-                                        
-                                        <li>
-                                        <a href="#1-环境配置">
-                                            1. 环境配置
-                                        </a>
-                                        </li>
-                                        
-            
-                                        
-                                    
-                                        
-                                        <li>
-                                        <a href="#2-modal下载">
-                                            2. Modal下载
+                                        <a href="#1-interface-还是-type">
+                                            1. interface 还是 type
                                         </a>
                                         </li>
                                         
@@ -261,18 +239,8 @@
                                             
                                                 
                                                 <li>
-                                                    <a href="#21-什么是base-model模型">
-                                                        2.1 什么是Base Model模型
-                                                    </a>
-                                                </li>
-                                                
-
-                                                
-                                            
-                                                
-                                                <li>
-                                                    <a href="#22-什么是checkpoint-embedding-lora">
-                                                        2.2 什么是checkpoint-embedding-LoRA
+                                                    <a href="#11-interface和type的相似性">
+                                                        1.1 interface和type的相似性
                                                     </a>
                                                 </li>
                                                 
@@ -285,24 +253,8 @@
                                                     
                                                         
                                                         <li>
-                                                            <a href="#221-checkpoint-检查点模型">
-                                                                2.2.1 checkpoint 检查点模型
-                                                            </a>
-                                                        </li>
-                                                        
-                                                    
-                                                        
-                                                        <li>
-                                                            <a href="#222-embedding-文本嵌入">
-                                                                2.2.2 embedding 文本嵌入
-                                                            </a>
-                                                        </li>
-                                                        
-                                                    
-                                                        
-                                                        <li>
-                                                            <a href="#223-lora(low-rank-adaptation-models)-低序适应性模型。">
-                                                                2.2.3 LoRA(Low-Rank Adaptation Models) 低序适应性模型。
+                                                            <a href="#111可定义obj结构">
+                                                                1.1.1可定义obj结构
                                                             </a>
                                                         </li>
                                                         
@@ -312,8 +264,8 @@
                                             
                                                 
                                                 <li>
-                                                    <a href="#23-常用模型">
-                                                        2.3 常用模型
+                                                    <a href="#12-interface和type的差异">
+                                                        1.2 interface和type的差异
                                                     </a>
                                                 </li>
                                                 
@@ -326,64 +278,32 @@
                                                     
                                                         
                                                         <li>
-                                                            <a href="#231-二次元模型">
-                                                                2.3.1 二次元模型
+                                                            <a href="#121-拓展类型时-写法不同">
+                                                                1.2.1 拓展类型时 写法不同
                                                             </a>
                                                         </li>
                                                         
                                                     
                                                         
                                                         <li>
-                                                            <a href="#232-写实派模型">
-                                                                2.3.2 写实派模型
+                                                            <a href="#122-可更改性不同">
+                                                                1.2.2 可更改性不同
                                                             </a>
                                                         </li>
                                                         
                                                     
                                                         
                                                         <li>
-                                                            <a href="#233-q版真人模型">
-                                                                2.3.3 Q版真人模型
+                                                            <a href="#123-type更灵活">
+                                                                1.2.3 type更灵活
                                                             </a>
                                                         </li>
                                                         
                                                     
                                                         
                                                         <li>
-                                                            <a href="#234-产品设计">
-                                                                2.3.4 产品设计
-                                                            </a>
-                                                        </li>
-                                                        
-                                                    
-                                                        
-                                                        <li>
-                                                            <a href="#235-ui设计">
-                                                                2.3.5 UI设计
-                                                            </a>
-                                                        </li>
-                                                        
-                                                    
-                                                        
-                                                        <li>
-                                                            <a href="#236-建筑设计">
-                                                                2.3.6 建筑设计
-                                                            </a>
-                                                        </li>
-                                                        
-                                                    
-                                                        
-                                                        <li>
-                                                            <a href="#237-海报设计">
-                                                                2.3.7 海报设计
-                                                            </a>
-                                                        </li>
-                                                        
-                                                    
-                                                        
-                                                        <li>
-                                                            <a href="#238-风格插画">
-                                                                2.3.8 风格插画
+                                                            <a href="#124-type报错可能会错报">
+                                                                1.2.4 type报错可能会错报
                                                             </a>
                                                         </li>
                                                         
@@ -396,18 +316,8 @@
                                     
                                         
                                         <li>
-                                        <a href="#3-图片生成初体验">
-                                            3. 图片生成初体验
-                                        </a>
-                                        </li>
-                                        
-            
-                                        
-                                    
-                                        
-                                        <li>
-                                        <a href="#4-小结">
-                                            4. 小结
+                                        <a href="#2-小结">
+                                            2. 小结
                                         </a>
                                         </li>
                                         
@@ -428,252 +338,91 @@
                 col-md-12
                 col-md-offset-0
                 post-container">
-                <h1 id="sdwebui体验">SDWebUI体验</h1>
+                <h1 id="1-interface-还是-type">1. interface 还是 type</h1>
+<p>interface与type非常相似，可用于自定义灵活的数据类型。下面介绍两者的相同和不同之处。</p>
+
+<h2 id="11-interface和type的相似性">1.1 interface和type的相似性</h2>
+<h3 id="111可定义obj结构">1.1.1可定义obj结构</h3>
+<p>不像string、number、boolean等基础类型，工作中常使用结构shape多样的obj。interface和type在定义shape上几乎是一样的。(type需要多一个等号)</p>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">interface</span> <span class="nx">obj1</span><span class="p">{</span>
+    <span class="nl">name</span><span class="p">:</span><span class="kr">string</span><span class="p">;</span>
+    <span class="nl">age</span><span class="p">:</span><span class="kr">number</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">type</span> <span class="nx">obj2</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span><span class="kr">string</span><span class="p">;</span>
+    <span class="nl">age</span><span class="p">:</span><span class="kr">number</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h2 id="12-interface和type的差异">1.2 interface和type的差异</h2>
+<h3 id="121-拓展类型时-写法不同">1.2.1 拓展类型时 写法不同</h3>
 <ul>
-  <li>
-    <p>配置：macbook m1</p>
-  </li>
-  <li>
-    <p>参考：<a href="https://www.bilibili.com/video/BV1Us4y1X75d/?vd_source=b5986de1b744d9509adf94ce3cdd2af5">b站:Nerdy同学的Mac m1部署教程</a></p>
+  <li>interface使用<code class="language-plaintext highlighter-rouge">extends</code></li>
+  <li>type使用<code class="language-plaintext highlighter-rouge">&amp;</code></li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">type</span> <span class="nx">baseItem</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">a</span><span class="p">:</span><span class="kr">string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kr">interface</span> <span class="nx">obj1</span> <span class="kd">extends</span> <span class="nx">baseItem</span><span class="p">{</span>
+    <span class="nl">b</span><span class="p">:</span><span class="kr">number</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">type</span> <span class="nx">obj2</span> <span class="o">=</span> <span class="nx">baseItem</span> <span class="o">&amp;</span> <span class="p">{</span>
+    <span class="na">c</span><span class="p">:</span><span class="kr">number</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h3 id="122-可更改性不同">1.2.2 可更改性不同</h3>
+<ul>
+  <li>interface可重复声明，类型let</li>
+  <li>type不可重复声明</li>
+</ul>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kr">interface</span> <span class="nx">obj1</span> <span class="p">{</span>
+    <span class="nl">a</span><span class="p">:</span><span class="kr">number</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="kr">interface</span> <span class="nx">obj1</span> <span class="p">{</span>
+    <span class="nl">b</span><span class="p">:</span><span class="kr">string</span><span class="p">;</span>
+<span class="p">}</span><span class="c1">//✅ obj{a:number, b:string}</span>
+
+<span class="kd">type</span> <span class="nx">obj2</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">a</span><span class="p">:</span><span class="kr">number</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">type</span> <span class="nx">obj2</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">b</span><span class="p">:</span><span class="kr">string</span><span class="p">;</span>
+<span class="p">}</span><span class="c1">//报错：❌ 命名重复</span>
+</code></pre></div></div>
+
+<h3 id="123-type更灵活">1.2.3 type更灵活</h3>
+<ul>
+  <li>联合类型</li>
+  <li>元组</li>
+  <li>基础类型别名
+    <div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">type</span> <span class="nx">obj</span> <span class="o">=</span> <span class="kr">number</span> <span class="o">|</span> <span class="kr">string</span><span class="p">;</span> <span class="c1">//联合类型</span>
+<span class="kd">type</span> <span class="nx">myArray</span> <span class="o">=</span> <span class="p">[</span><span class="kr">number</span><span class="p">,</span><span class="kr">string</span><span class="p">];</span> <span class="c1">//元组</span>
+<span class="kd">type</span> <span class="nx">myString</span> <span class="o">=</span> <span class="kr">string</span><span class="p">;</span> <span class="c1">//基础类型别名</span>
+</code></pre></div>    </div>
   </li>
 </ul>
 
-<h1 id="1-环境配置">1. 环境配置</h1>
+<h3 id="124-type报错可能会错报">1.2.4 type报错可能会错报</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">type</span> <span class="nx">myNumber</span> <span class="o">=</span> <span class="kr">number</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">a</span><span class="p">:</span> <span class="nx">myNumber</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">b</span><span class="p">:</span> <span class="kr">number</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">20</span><span class="dl">'</span><span class="p">;</span>  <span class="c1">// 报错，在typescript4.2版本前可能报告错误在type myNumber,因为number同名牵涉。</span>
+</code></pre></div></div>
+
+<h1 id="2-小结">2. 小结</h1>
 <ul>
-  <li>
-    <p>安装homebrew（安装包管理器）国内镜像：
-<code class="language-plaintext highlighter-rouge">/bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"</code></p>
-  </li>
-  <li>终端使用homebrew安装各种工具(已安装的可以忽略)：
-<code class="language-plaintext highlighter-rouge">brew install cmake protobuf rust python@3.10 git wget</code></li>
-  <li>前两步完成后运行SD Web UI的环境已经配置好了，git<a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui">
-AUTOMATIC1111开发的SDwebUI项目代码</a>到本地</li>
-  <li>打开stable diffusion项目代码找到webUI.sh脚本用终端打开运行，脚本自动帮你下载项目依赖，下载成功后自动打开浏览器展示页面（如图1）。</li>
+  <li>约束obj的形状结构时，建议用<code class="language-plaintext highlighter-rouge">interface</code>。</li>
+  <li>其余涉及联合类型、元组、基础类型别名用<code class="language-plaintext highlighter-rouge">type</code>。</li>
 </ul>
-
-<div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_01.jpg" alt="模型运行后打开local URL即可预览" width="60%" /></div>
-<div align="center"><span></span></div>
-
-<blockquote>
-  <p>图片中<strong>stable diffusion model failed to load</strong>是因为初始项目model文件夹为空，因此无法加载模型，可在ai大模型素材网站<a href="https://civitai.com/">civitai</a>和<a href="https://huggingface.co/">hugging face</a>手动下载想要到模型到<strong>models</strong>文件夹即可。</p>
-</blockquote>
-
-<ul>
-  <li>打开浏览器，看到web ui就成功了，开始作图吧~</li>
-</ul>
-<div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_03.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
-
-<h1 id="2-modal下载">2. Modal下载</h1>
-<p>共享模型和数据集的平台有：</p>
-<ul>
-  <li><a href="https://huggingface.co/">hugging face</a>：类似github,具有成熟的模型社区和评论互动。</li>
-  <li><a href="https://civitai.com/">civitai</a>：类似pinterest一样的图片瀑布流性，直观展示每个模型的视觉风格，更利于搜索。</li>
-</ul>
-
-<blockquote>
-  <p>💡: 本文模型素材皆来自civitai（下文简称c站）。</p>
-  <h2 id="21-什么是base-model模型">2.1 什么是Base Model模型</h2>
-  <p>    在c站几乎所有模型中的base model一栏通常会是SD1、SD1.5等底模型，这是SD官方发行的图片生成模型，具有大而全的特点。但正因为训练数据全而不精，导致仅使用底模生成的图片质量不佳，难以满足需求。因此“炼丹师”会在底模的基础上继续投入大量高质量特定风格的图片继续训练，形成针对性更强、画面更精美的模型，包括checkpoint、embedding和LoRA三种形态。</p>
-</blockquote>
-
-<h2 id="22-什么是checkpoint-embedding-lora">2.2 什么是checkpoint-embedding-LoRA</h2>
-<p>    checkpoint、embedding、LoRA这三种模型都可以显著提升图片的风格特性，使用方法类似但原理有所差别。</p>
-<h3 id="221-checkpoint-检查点模型">2.2.1 checkpoint 检查点模型</h3>
-<p>    底模也是一种checkpoint。但因为产出取决于训练数据，想要更新产出，就需要更新训练数据，因此更多“炼丹师”在底模基础上（巨人肩膀上）继续投入新的风格图片并将训练结果记录下来形成新的模型。因此check体积较大，通常在2-8GB内。使用checkpoint可生成比底模质量更好，视觉风格更一致的图片。</p>
-<ul>
-  <li>使用方法：下载checkpoint放到stable diffusion webUI-&gt; models -&gt; stable diffusion文件夹内即可。
-    <h3 id="222-embedding-文本嵌入">2.2.2 embedding 文本嵌入</h3>
-    <p>    在生成图片时，除了选定模型外，还需要大量精确的描述词帮助模型理解你的需求。有没有可能有人已经帮你写好了prompt词？embedding就是如此。embedding使用向量文本更加精确定位图像特征，让模型更具针对性。就好比某次语文考试范围是一整本书，A学生拿到了一张小抄，上面透露了本次考试的更精确的范围是第5章，Ta将精力都放在复习第五章内，因为Ta得到了更加聚焦的消息，因此考出了更高的分数。embedding格式是纯文本，因此体积仅占几十KB。</p>
-  </li>
-  <li>使用方式：下载embedding放置到stable diffusion webUI-&gt; embeddings 文件夹,在正向Prompt词输入框内填写触发词<code class="language-plaintext highlighter-rouge">trigger words</code>即可，根据embedding作者提示还可调整模型权重调节画面效果。
-    <h3 id="223-loralow-rank-adaptation-models-低序适应性模型">2.2.3 LoRA(Low-Rank Adaptation Models) 低序适应性模型。</h3>
-    <p>    LoRA像是一种外挂，用于调节checkpoint产出。embedding只是给出了更精确的定位，但无法告知更新的知识。LoRA则是对某个人物或某种风格更新、更详细、更具体的训练模型。就好比B同学在语文考试前拿到了一张新闻报纸，与没有报纸的其他同学相比，B同学阅读到的相关新闻素材指导他写出了更震撼人心的文章，最后考出了非凡的成绩。因此LoRA是面向某种checkpoint新的延伸，信息量比embedding大，但比checkpoint小，体积约占数百MB。</p>
-  </li>
-  <li>使用方式：下载LoRA放置到stable diffusion webUI-&gt; models -&gt; LoRA文件夹,在正向Prompt词输入框内填写<code class="language-plaintext highlighter-rouge">&lt;lora:${lora模型名称}&gt;</code>即可触发。</li>
-</ul>
-
-<h2 id="23-常用模型">2.3 常用模型</h2>
-<p>    大量“炼丹师”的辛勤劳作促进模型社区的不断发展，许多模型经历了多次升级，下面整理常见风格的模型，模型名称随着迭代可能会有所不同。</p>
-<blockquote>
-  <p>💡 当前AI在视觉效果方面遥遥领先，但在图像逻辑处表现不佳，具体表现在如文字、尺寸等地方毫无逻辑，这与图像生成原理有关。因此在<strong>海报设计、icon设计、界面设计</strong>方面不建议使用AIGC。</p>
-</blockquote>
-
-<h3 id="231-二次元模型">2.3.1 二次元模型</h3>
-<ul>
-  <li>
-    <p>搜索关键词：Illustration, painting, sketch, drawing, comic, anime, catoon</p>
-  </li>
-  <li>
-    <p>模型推荐：</p>
-    <ul>
-      <li>
-        <table>
-          <tbody>
-            <tr>
-              <td>Anything</td>
-              <td>万象熔炉 （日漫）</td>
-            </tr>
-          </tbody>
-        </table>
-      </li>
-    </ul>
-    <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_04.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
-
-    <ul>
-      <li>Counterfeit V2.5 （日漫）</li>
-    </ul>
-    <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_05.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
-
-    <ul>
-      <li>Dreamlike Diffusion（梦幻、赛博）</li>
-    </ul>
-    <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_06.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
-  </li>
-</ul>
-
-<h3 id="232-写实派模型">2.3.2 写实派模型</h3>
-<ul>
-  <li>搜索关键词：Photography, photo, realistic, photorealistic, RAW photo</li>
-  <li>模型推荐：
-    <ul>
-      <li>Realistic Stock Photo
-        <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_07.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
-      </li>
-      <li>Realistic Vision
-        <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_08.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="233-q版真人模型">2.3.3 Q版真人模型</h3>
-<ul>
-  <li>
-    <p>搜索关键词：3D, render, chibi, digital art, concept art</p>
-  </li>
-  <li>模型推荐：
-    <ul>
-      <li>Q版风格 CHIBI
-        <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_09.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
-      </li>
-      <li>Never Ending Dream (NED)
-        <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_10.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
-      </li>
-      <li>Protogen(Realistic)
-        <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_11.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
-      </li>
-      <li>国风(GuoFeng3)
-        <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_12.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
-        <h3 id="234-产品设计">2.3.4 产品设计</h3>
-      </li>
-    </ul>
-  </li>
-  <li>搜索关键词：product design</li>
-  <li>模型推荐：
-    <ul>
-      <li>Product Design (Realistic minimalism-eddiemauro)
-        <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_13.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
-      </li>
-      <li>Product Design (Tech minimalism-eddiemauro) LORA
-        <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_14.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="235-ui设计">2.3.5 UI设计</h3>
-<ul>
-  <li>模型推荐：
-    <ul>
-      <li>APP ICONS - SDXL
-        <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_15.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="236-建筑设计">2.3.6 建筑设计</h3>
-<ul>
-  <li>模型推荐：
-    <ul>
-      <li>architecture_Exterior_SDlife_Chiasedamme
-        <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_16.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
-        <h3 id="237-海报设计">2.3.7 海报设计</h3>
-      </li>
-    </ul>
-  </li>
-  <li>模型推荐
-    <ul>
-      <li>Movie Poster （文字部分可看出毫无逻辑😰）
-        <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_17.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="238-风格插画">2.3.8 风格插画</h3>
-<ul>
-  <li>模型推荐：
-    <ul>
-      <li>SDVN7-NijiStyleXL （绝美的一个风格）
-        <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_18.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h1 id="3-图片生成初体验">3. 图片生成初体验</h1>
-<ul>
-  <li>选用模型：Realistic vision</li>
-  <li>参数调节：选定某张图片后，可抄目标图片右侧参数作业。
-    <div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_19.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
-  </li>
-</ul>
-
-<hr />
-<p>第一次出图： <br />
-<strong>prompt</strong>：closeup portrait photo of beautiful 26 y.o woman, makeup, 8k uhd, high quality, dramatic, cinematic <br />
-<strong>Negative prompt</strong>：(deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime), text, cropped, out of frame, worst quality, low quality, jpeg artifacts, ugly, duplicate, morbid, mutilated, extra fingers, mutated hands, poorly drawn hands, poorly drawn face, mutation, deformed, blurry, dehydrated, bad anatomy, bad proportions, extra limbs, cloned face, disfigured, gross proportions, malformed limbs, missing arms, missing legs, extra arms, extra legs, fused fingers, too many fingers, long neck <br />
-<strong>seed</strong>：3108443162 <u>（seed种子，可看作某张图片内容风格的坐标，沿用参考图片的seed可生成类似的图像内容，若选择任意seed，生成图像内容自由度增更高。）</u> <br />
-<strong>耗时</strong>：56sec <br />
-<strong>出图大小</strong>：512*512；329kb <br />
-<strong>成品</strong>：</p>
-<div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_21.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
-<p><strong>存在的问题</strong>：皮肤模糊，高光太虚，画质不高。
-<strong>改进方式</strong>：使用hires.fix高清修复功能，调高scale为1.4，步数为10，denoising strength为0.5。</p>
-
-<hr />
-
-<p>第二张图 <br />
-<strong>耗时</strong>：61sec <br />
-<strong>出图大小</strong>：512*512；632kb <br />
-<strong>成品</strong>：</p>
-<div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_22.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
-<p><strong>结论</strong>：画质确实清晰了一倍，达到632kb,但seed变成随意后美女完全变了。增加sampling steps作用不大，但增加scale作用显著。另外，把图一直放着，就会根据这个图不断生成。保留该张图片的seed重新制作第三张。</p>
-
-<hr />
-<p>第三张图 <br />
-<strong>耗时</strong>：73sec <br />
-<strong>出图大小</strong>：512*512；1.2M <br />
-<strong>成品</strong>：</p>
-<div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_23.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
-<p><strong>结论</strong>：将scale调为2，画质已经没有明显变化，但图片体积仍然翻倍。保留seed后美女似乎保持了同一个人，但仔细观察头发、眼睛却有了细微变化。为了增加真实感，增加斑点、高光<code class="language-plaintext highlighter-rouge">high light on skin, two small moles</code>prompt词制作第四张图。</p>
-
-<hr />
-
-<p>第四张图 <br />
-<strong>耗时</strong>：75sec <br />
-<strong>出图大小</strong>：512*512；1.2M <br />
-<strong>成品</strong>：</p>
-<div align="center"><img src="http://127.0.0.1:4000/home/img/for-post/01_stablediffusion_24.jpg" alt="模型运行后打开local URL即可预览" width="80%" /></div>
-<p><strong>结论</strong>：由于prompt词的改变，每次又变脸了，但大模型似乎没有听懂我的<code class="language-plaintext highlighter-rouge">色素痣moles</code>，美女脸上依旧白皙无暇，后面出图也发现，并不能完全依赖输入词来决定图像内容。
-—</p>
-
-<h1 id="4-小结">4. 小结</h1>
-<p>    对比使用纸笔或ipad画画，ai作图<strong>成就感极低且不确定性极高</strong>，加上电脑配置不足导致出图时长过长，刚开始的新鲜感已被消耗殆尽。我在翻看c站模型时，发现这些看似精美的图片并没有像pinterest、behance、dribbble的作品一样让人眼前一亮。这些精美图片的出路在哪里？AIGC图片具有完美的但意料之中的视觉效果，但太过完美极易导致视觉疲劳。想要增加图像的吸引度，可增加图像的<strong>故事性、逻辑性、娱乐性、新颖性</strong>。例如创作具有故事性的连环画、创作不寻常的图片等，令图像具备超脱像素的信息量。下一集的目标将是制作一则连环画或是一则海龟汤~</p>
-<blockquote>
-  <p>未完待续……</p>
-</blockquote>
 
 
                 <hr>
@@ -683,13 +432,9 @@ AUTOMATIC1111开发的SDwebUI项目代码</a>到本地</li>
 
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/home/2023/12/14/TypeScript%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C/" data-toggle="tooltip" data-placement="top" title="interface 还是 type?">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/home/2024/04/22/gitLens%E5%B8%B8%E7%94%A8%E5%8A%9F%E8%83%BD%E8%AF%A6%E8%A7%A3/" data-toggle="tooltip" data-placement="top" title="Gitlens常用功能详解">Next Post &rarr;</a>
+                        <a href="/home/2024/01/04/stable-diffusion-first-time/" data-toggle="tooltip" data-placement="top" title="stable diffusion webUI项目启动流程和若干个模型尝试">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
