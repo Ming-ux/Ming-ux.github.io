@@ -34,25 +34,25 @@
 
 ```
 # Site settings
-title: Hux Blog             # 你的博客网站标题
-SEOTitle: Hux Blog			# 在后面会详细谈到
-description: "Cool Blog"    # 随便说点，描述一下
+title: Minghui Lv          # 你的博客网站标题
+SEOTitle: 吕明慧的博客 | Ming's Blog	# 引擎搜索标题
+description: "吕明慧的博客"    # 网站描述
 
 # SNS settings      
-github_username: huxpro     # 你的github账号
-weibo_username: huxpro      # 你的微博账号，底部链接会自动更新的。
+github_username: Ming-ux     # 你的github账号
+xiaohongshu_username: XXXXXXX
+juejin_username: XXXXXXXXX
 
 # Build settings
 # paginate: 10              # 一页你准备放几篇文章
 ```
 
-Jekyll官方网站还有很多的参数可以调，比如设置文章的链接形式...网址在这里：[Jekyll - Official Site](http://jekyllrb.com/) 中文版的在这里：[Jekyll中文](http://jekyllcn.com/).
 
 #### write-posts
 
-要发表的文章一般以markdown的格式放在这里`_posts/`，你只要看看这篇模板里的文章你就立刻明白该如何设置。
+要发表的文章一般以markdown的格式放在这里`_posts/`
 
-yaml 头文件长这样:
+markdown文件头配置如下，表明文章内容将应用在post布局文件中，有对应的标题、日期、作者等等。
 
 ```
 ---
@@ -70,15 +70,12 @@ tags:
 
 #### SideBar
 
-长这样:
-![](http://huangxuan.me/img/blog-sidebar.jpg)
-
 设置是在 `_config.yml`文件里面的`Sidebar settings`那块。
 ```
 # Sidebar settings
 sidebar: true  #添加侧边栏
 sidebar-about-description: "简单的描述一下你自己"
-sidebar-avatar: /img/avatar-hux.jpg     #你的大头贴，请使用绝对地址.
+sidebar-avatar: /home/img/about-me.jpg    #你的大头贴，请使用绝对地址.
 ```
 
 侧边栏是响应式布局的，当屏幕尺寸小于992px的时候，侧边栏就会移动到底部。具体请见bootstrap栅格系统 <http://v3.bootcss.com/css/>
